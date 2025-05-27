@@ -1,0 +1,1180 @@
+/**
+ * SymmaType Editor Styles - أنماط واجهة المحرر
+ * تنسيق شكل المحرر وشريط الأدوات والنوافذ المنبثقة
+ * منفصل تماماً عن أنماط المحتوى
+ */
+
+/* ===== متغيرات الواجهة ===== */
+:root {
+    /* ألوان النظام */
+    --syty-primary: #3b82f6;
+    --syty-secondary: #6b7280;
+    --syty-success: #10b981;
+    --syty-warning: #f59e0b;
+    --syty-danger: #ef4444;
+    --syty-info: #06b6d4;
+    --syty-white: #ffffff;
+    --syty-black: #000000;
+    
+    /* تدرجات الرمادي */
+    --syty-gray-50: #f9fafb;
+    --syty-gray-100: #f3f4f6;
+    --syty-gray-200: #e5e7eb;
+    --syty-gray-300: #d1d5db;
+    --syty-gray-400: #9ca3af;
+    --syty-gray-500: #6b7280;
+    --syty-gray-600: #4b5563;
+    --syty-gray-700: #374151;
+    --syty-gray-800: #1f2937;
+    --syty-gray-900: #111827;
+    
+    /* المسافات */
+    --syty-spacing-xs: 4px;
+    --syty-spacing-sm: 8px;
+    --syty-spacing: 12px;
+    --syty-spacing-lg: 16px;
+    --syty-spacing-xl: 24px;
+    --syty-spacing-2xl: 32px;
+    
+    /* الحدود */
+    --syty-border-radius: 6px;
+    --syty-border-radius-lg: 12px;
+    --syty-border-width: 1px;
+    
+    /* الظلال */
+    --syty-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --syty-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== أنماط الحاوي الرئيسي ===== */
+.syty-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    background: var(--syty-white);
+    border-radius: var(--syty-border-radius-lg);
+    box-shadow: var(--syty-shadow-lg);
+    overflow: hidden;
+    margin: var(--syty-spacing-lg) 0;
+    border: 2px solid var(--syty-gray-200);
+    max-width: 800px;
+    margin: 32px auto;
+    transition: max-width 0.3s, width 0.3s;
+}
+
+/* ===== وضع الشاشة الكاملة (Fullscreen) ===== */
+.syty-container.syty-fullscreen {
+    position: fixed !important;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: var(--syty-white);
+    display: flex;
+    flex-direction: column;
+}
+.syty-fullscreen .syty-editor {
+    min-height: 0;
+    flex: 1 1 auto;
+    height: 100%;
+    max-height: 100%;
+}
+.syty-fullscreen .syty-toolbar {
+    border-radius: 0;
+}
+
+/* ===== أنماط شريط الأدوات ===== */
+/* تم توحيد اسم الكلاس من syty-group إلى syty-toolbar-group لتوحيد التسمية */
+.syty-toolbar {
+    background: var(--syty-gray-50);
+    border-bottom: var(--syty-border-width) solid var(--syty-gray-200);
+    padding: var(--syty-spacing);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--syty-spacing-sm);
+    align-items: center;
+    min-height: 50px;
+}
+
+.syty-toolbar-group {
+    display: flex;
+    gap: var(--syty-spacing-xs);
+    align-items: center;
+    border-left: var(--syty-border-width) solid var(--syty-gray-300);
+    padding-left: var(--syty-spacing);
+}
+
+.syty-toolbar-group:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+
+.syty-toolbar-button {
+    background: transparent;
+    border: var(--syty-border-width) solid transparent;
+    border-radius: var(--syty-border-radius);
+    padding: var(--syty-spacing-sm) var(--syty-spacing);
+    cursor: pointer;
+    color: var(--syty-gray-700);
+    font-size: 14px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: var(--syty-spacing-xs);
+    min-width: 32px;
+    min-height: 32px;
+    justify-content: center;
+}
+
+.syty-toolbar-button:hover {
+    background: var(--syty-gray-100);
+    border-color: var(--syty-gray-300);
+}
+
+.syty-toolbar-button.active {
+    background: var(--syty-primary);
+    color: var(--syty-white);
+    border-color: var(--syty-primary);
+}
+
+.syty-toolbar-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.syty-toolbar-select {
+    background: #fff;
+    border: 1.5px solid #d1d5db;
+    border-radius: var(--syty-border-radius);
+    padding: 8px 32px 8px 12px;
+    font-size: 15px;
+    color: #374151;
+    min-width: 120px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.syty-toolbar-select:focus,
+.syty-toolbar-select:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.12);
+}
+
+.syty-toolbar-separator {
+    width: 1px;
+    height: 24px;
+    background: var(--syty-gray-300);
+    margin: 0 var(--syty-spacing-sm);
+}
+
+/* ===== أنماط منطقة التحرير ===== */
+.syty-editor {
+    background: var(--syty-white);
+    padding: var(--syty-spacing-lg);
+    min-height: 300px;
+    outline: none;
+    overflow-y: auto;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--syty-gray-800);
+    border: none;
+}
+
+.syty-editor:focus {
+    outline: none;
+}
+
+.syty-editor[contenteditable="true"]:empty:before {
+    content: attr(data-placeholder);
+    color: var(--syty-gray-400);
+    font-style: italic;
+    pointer-events: none;
+}
+
+/* ===== أنماط شريط الإحصائيات ===== */
+.syty-stats-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    background: #f8f9fa;
+    border-radius: 0 0 16px 16px;
+    padding: 10px 24px 8px 16px;
+    font-size: 15px;
+    color: #374151;
+    position: relative;
+    min-height: 38px;
+}
+.syty-status-logo-link {
+    margin-right: auto;
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.syty-status-logo {
+    width: 24px;
+    height: 24px;
+    display: block;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.syty-status-icon {
+    font-size: 18px !important;
+    vertical-align: middle;
+    margin-left: 3px;
+    margin-right: 1px;
+    color: #64748b;
+}
+.syty-stats-bar > div, .syty-stats-bar > a {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.syty-stats-bar > a {
+    margin-left: auto;
+    margin-right: 0;
+}
+/* دعم RTL */
+[dir="rtl"] .syty-stats-bar {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+[dir="rtl"] .syty-status-logo-link {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/* ===== أنماط النوافذ المنبثقة ===== */
+.syty-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(12px);
+}
+
+.syty-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.syty-modal-content {
+    background: var(--syty-white);
+    border-radius: var(--syty-border-radius-lg);
+    box-shadow: var(--syty-shadow-lg);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: auto;
+    direction: rtl;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.syty-modal.show .syty-modal-content {
+    transform: scale(1);
+}
+
+.syty-modal-header {
+    padding: var(--syty-spacing-lg);
+    border-bottom: var(--syty-border-width) solid var(--syty-gray-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--syty-gray-50);
+}
+
+.syty-modal-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--syty-gray-800);
+    margin: 0;
+}
+
+.syty-modal-close {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--syty-gray-500);
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--syty-border-radius);
+    transition: all 0.2s ease;
+}
+
+.syty-modal-close:hover {
+    background: var(--syty-gray-100);
+    color: var(--syty-gray-700);
+}
+
+.syty-modal-body {
+    padding: var(--syty-spacing-lg);
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.syty-modal-footer {
+    padding: var(--syty-spacing-lg);
+    border-top: var(--syty-border-width) solid var(--syty-gray-200);
+    display: flex;
+    gap: var(--syty-spacing);
+    justify-content: flex-start;
+    background: var(--syty-gray-50);
+}
+
+/* ===== أنماط الأزرار ===== */
+/* تم توحيد جميع خصائص الأزرار على syty-btn فقط، وتم حذف أو إعادة توجيه أي تكرار */
+.syty-btn {
+    background: linear-gradient(180deg, #fff 0%, #f3f4f6 100%);
+    color: #111;
+    border: solid 2px #b8c1cf;
+    border-radius: var(--syty-border-radius);
+    padding: 4px 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-width: 20px;
+    min-height: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+}
+
+.syty-btn:hover,
+.syty-btn:focus,
+.syty-btn.syty-btn-active,
+.syty-btn.active {
+    background: #2563eb;
+    border: solid 2px #82aadd;
+}
+
+.syty-btn:hover .material-icons,
+.syty-btn:focus .material-icons,
+.syty-btn.syty-btn-active .material-icons,
+.syty-btn.active .material-icons,
+.syty-btn:hover span,
+.syty-btn:focus span,
+.syty-btn.syty-btn-active span,
+.syty-btn.active span {
+    color: #fff;
+}
+
+.syty-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.syty-btn.secondary {
+    background: var(--syty-secondary);
+}
+
+.syty-btn.secondary:hover {
+    background: #4b5563;
+}
+
+.syty-btn.success {
+    background: var(--syty-success);
+}
+
+.syty-btn.success:hover {
+    background: #059669;
+}
+
+.syty-btn.warning {
+    background: var(--syty-warning);
+}
+
+.syty-btn.warning:hover {
+    background: #d97706;
+}
+
+.syty-btn.danger {
+    background: var(--syty-danger);
+}
+
+.syty-btn.danger:hover {
+    background: #dc2626;
+}
+
+.syty-btn.outline {
+    background: transparent;
+    border: var(--syty-border-width) solid var(--syty-primary);
+    color: var(--syty-primary);
+}
+
+.syty-btn.outline:hover {
+    background: var(--syty-primary);
+    color: var(--syty-white);
+}
+
+/* إعادة توجيه أي خصائص للأزرار القديمة إلى syty-btn */
+.syty-toolbar-button,
+.syty-toolbar-button:hover,
+.syty-toolbar-button.active,
+.syty-toolbar-button:disabled {
+    all: unset;
+    /* إعادة تعيين كل شيء ثم تطبيق syty-btn */
+    @apply .syty-btn;
+}
+
+/* ===== أنماط النماذج ===== */
+.syty-form-group {
+    margin-bottom: var(--syty-spacing-lg);
+}
+
+.syty-form-label {
+    display: block;
+    margin-bottom: var(--syty-spacing-sm);
+    font-weight: 500;
+    color: var(--syty-gray-700);
+    font-size: 14px;
+}
+
+.syty-form-input,
+.syty-form-textarea,
+.syty-form-select {
+    width: 100%;
+    padding: var(--syty-spacing) var(--syty-spacing-lg);
+    border: var(--syty-border-width) solid var(--syty-gray-300);
+    border-radius: var(--syty-border-radius);
+    font-size: 14px;
+    color: var(--syty-gray-700);
+    background: var(--syty-white);
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+}
+
+.syty-form-input:focus,
+.syty-form-textarea:focus,
+.syty-form-select:focus {
+    outline: none;
+    border-color: var(--syty-primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.syty-form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+.syty-form-row {
+    display: flex;
+    gap: var(--syty-spacing);
+    align-items: end;
+}
+
+.syty-form-col {
+    flex: 1;
+}
+
+/* ===== أنماط الجداول في النماذج ===== */
+.syty-table-form {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--syty-spacing-lg) 0;
+    border: var(--syty-border-width) solid var(--syty-gray-300);
+    border-radius: var(--syty-border-radius);
+    overflow: hidden;
+}
+
+.syty-table-form th,
+.syty-table-form td {
+    padding: var(--syty-spacing);
+    border: var(--syty-border-width) solid var(--syty-gray-300);
+    text-align: right;
+}
+
+.syty-table-form th {
+    background: var(--syty-gray-50);
+    font-weight: 600;
+    color: var(--syty-gray-800);
+}
+
+.syty-table-form input {
+    width: 100%;
+    border: none;
+    padding: var(--syty-spacing-sm);
+    background: transparent;
+    font-size: 14px;
+}
+
+.syty-table-form input:focus {
+    outline: none;
+    background: var(--syty-gray-50);
+}
+
+/* ===== أنماط منتقي الألوان ===== */
+.syty-color-picker {
+    position: relative;
+    display: inline-block;
+}
+
+.syty-color-button {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--syty-gray-300);
+    border-radius: var(--syty-border-radius);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.syty-color-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: currentColor;
+}
+
+.syty-color-palette {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--syty-white);
+    border: var(--syty-border-width) solid var(--syty-gray-300);
+    border-radius: var(--syty-border-radius);
+    box-shadow: var(--syty-shadow-lg);
+    padding: var(--syty-spacing);
+    display: none;
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.syty-color-palette.show {
+    display: block;
+}
+
+.syty-color-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: var(--syty-spacing-xs);
+    margin-bottom: var(--syty-spacing);
+}
+
+.syty-color-swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--syty-border-radius);
+    cursor: pointer;
+    border: 1px solid var(--syty-gray-300);
+    transition: transform 0.2s ease;
+}
+
+.syty-color-swatch:hover {
+    transform: scale(1.1);
+}
+
+/* ===== أنماط البحث ===== */
+.syty-search-modal .syty-modal-content {
+    width: 500px;
+    max-width: 90vw;
+}
+
+.syty-search-input {
+    width: 100%;
+    padding: var(--syty-spacing) var(--syty-spacing-lg);
+    border: 2px solid var(--syty-primary);
+    border-radius: var(--syty-border-radius);
+    font-size: 16px;
+    margin-bottom: var(--syty-spacing);
+}
+
+.syty-search-options {
+    display: flex;
+    gap: var(--syty-spacing);
+    margin-bottom: var(--syty-spacing);
+}
+
+.syty-search-checkbox {
+    display: flex;
+    align-items: center;
+    gap: var(--syty-spacing-xs);
+    font-size: 14px;
+}
+
+/* ===== أنماط التحميل ===== */
+.syty-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--syty-gray-300);
+    border-radius: 50%;
+    border-top-color: var(--syty-primary);
+    animation: syty-spin 1s ease-in-out infinite;
+}
+
+@keyframes syty-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== أنماط الرسائل ===== */
+.syty-message {
+    padding: var(--syty-spacing) var(--syty-spacing-lg);
+    border-radius: var(--syty-border-radius);
+    margin: var(--syty-spacing) 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: var(--syty-spacing-sm);
+}
+
+.syty-message.info {
+    background: #cce7ff;
+    color: #0d6efd;
+    border: 1px solid #0d6efd;
+}
+
+.syty-message.success {
+    background: #d4edda;
+    color: #198754;
+    border: 1px solid #198754;
+}
+
+.syty-message.warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffc107;
+}
+
+.syty-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #dc3545;
+}
+
+/* ===== أنماط التصميم المتجاوب ===== */
+@media (max-width: 768px) {
+    .syty-container {
+        margin: var(--syty-spacing) 0;
+        border-radius: var(--syty-border-radius);
+    }
+    
+    .syty-toolbar {
+        padding: var(--syty-spacing-sm);
+        gap: var(--syty-spacing-xs);
+    }
+    
+    .syty-toolbar-group {
+        border-left: none;
+        padding-left: 0;
+        border-bottom: var(--syty-border-width) solid var(--syty-gray-300);
+        padding-bottom: var(--syty-spacing-sm);
+        margin-bottom: var(--syty-spacing-sm);
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .syty-toolbar-group:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    
+    .syty-toolbar-button {
+        min-width: 40px;
+        min-height: 40px;
+    }
+    
+    .syty-toolbar-select {
+        min-width: 100px;
+    }
+    
+    .syty-editor {
+        padding: var(--syty-spacing);
+        min-height: 250px;
+    }
+    
+    .syty-modal-content {
+        margin: var(--syty-spacing);
+        max-width: calc(100vw - 32px);
+        max-height: calc(100vh - 32px);
+    }
+    
+    .syty-form-row {
+        flex-direction: column;
+        gap: var(--syty-spacing-sm);
+    }
+}
+
+/* ===== أنماط الطباعة ===== */
+@media print {
+    .syty-toolbar,
+    .syty-stats-bar,
+    .syty-modal {
+        display: none !important;
+    }
+    
+    .syty-container {
+        box-shadow: none;
+        border: none;
+        margin: 0;
+    }
+    
+    .syty-editor {
+        padding: 0;
+        min-height: auto;
+    }
+}
+
+/* ===== أنماط إمكانية الوصول ===== */
+.syty-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.syty-focus-visible:focus {
+    outline: 2px solid var(--syty-primary);
+    outline-offset: 2px;
+}
+
+/* ===== أنماط الحالات الخاصة ===== */
+.syty-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.syty-hidden {
+    display: none !important;
+}
+
+.syty-invisible {
+    visibility: hidden;
+}
+
+/* ===== ترتيب مجموعات شريط الأدوات بشكل أفقي ===== */
+.syty-toolbar-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.syty-toolbar-row-2 {
+    margin-bottom: 0;
+}
+
+/* زر وضع الشاشة الكاملة */
+.syty-toolbar-fullscreen-btn {
+    margin-right: 4px;
+    font-size: 18px;
+    background: transparent;
+    border: none;
+    color: var(--syty-gray-600);
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 2px 6px;
+    transition: background 0.2s, color 0.2s;
+}
+.syty-toolbar-fullscreen-btn:hover {
+    background: var(--syty-gray-100);
+    color: var(--syty-primary);
+}
+
+@media (max-width: 900px) {
+    .syty-container {
+        max-width: 100vw;
+        margin: 0;
+        border-radius: 0;
+    }
+}
+
+/* ===== تحسين مظهر الأيقونات داخل الأزرار:
+   - الأيقونة باللون الأبيض مع تدرج رمادي خفيف افتراضيًا
+   - عند التمرير أو تفعيل الزر تصبح الأيقونة زرقاء
+   ================================ */
+.syty-btn .material-icons,
+.syty-btn span {
+    color: #222;
+    transition: color 0.2s;
+    font-size: 18px;
+}
+.syty-btn:hover .material-icons,
+.syty-btn:focus .material-icons,
+.syty-btn:hover span,
+.syty-btn:focus span {
+    color: #fff;
+}
+.syty-btn.syty-btn-active .material-icons,
+.syty-btn.active .material-icons,
+.syty-btn.syty-btn-active span,
+.syty-btn.active span {
+    color: #fff;
+}
+
+/* ================================
+   تحسين مظهر القوائم المنسدلة (select):
+   - نفس حواف الأزرار، ظل خفيف، ألوان متناسقة، حجم خط مناسب
+   ================================ */
+.syty-toolbar-select {
+    background: #fff;
+    border: 1.5px solid #d1d5db;
+    border-radius: var(--syty-border-radius);
+    padding: 8px 32px 8px 12px;
+    font-size: 15px;
+    color: #374151;
+    min-width: 120px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+.syty-toolbar-select:focus,
+.syty-toolbar-select:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.12);
+}
+
+/* ================================
+   تنسيق احترافي لحاوية القوائم المنسدلة syty-select-container
+   ================================ */
+.syty-select-container {
+    display: inline-block;
+    position: relative;
+    min-width: 140px;
+    margin-left: 8px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* السهم المخصص */
+.syty-select-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 16px; /* اجعل السهم في أقصى اليمين للـ RTL */
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 7px solid #b8c1cf;
+    transform: translateY(-50%);
+    z-index: 2;
+    transition: border-top-color 0.2s;
+}
+
+.syty-select-container select:focus ~ .syty-select-container::after,
+.syty-select-container select:hover ~ .syty-select-container::after {
+    border-top-color: #2563eb;
+}
+
+/* تنسيق القائمة المنسدلة نفسها */
+.syty-select-container select,
+.syty-toolbar-select {
+    background: #fff;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    padding: 8px 36px 8px 12px;
+    font-size: 15px;
+    color: #374151;
+    min-width: 120px;
+    height: 38px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    position: relative;
+    z-index: 1;
+}
+
+/* عند التمرير أو التركيز */
+.syty-select-container select:focus,
+.syty-select-container select:hover,
+.syty-toolbar-select:focus,
+.syty-toolbar-select:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.12);
+}
+
+/* إخفاء سهم النظام الافتراضي */
+.syty-select-container select::-ms-expand {
+    display: none;
+}
+.syty-select-container select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* ================================
+   تحسين مظهر القائمة المنسدلة المفتوحة (Dropdown)
+   ================================ */
+.syty-select-container select:focus,
+.syty-select-container select:active {
+    background: rgba(255,255,255,0.85);
+    border-color: #2563eb;
+    box-shadow: 0 8px 32px 0 rgba(59,130,246,0.18), 0 1.5px 6px rgba(59,130,246,0.10);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    outline: none;
+    z-index: 10;
+}
+
+.syty-select-container::after {
+    background: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(59,130,246,0.10);
+    padding: 2px;
+}
+
+/* عند فتح القائمة، السهم يصبح أزرق غامق */
+.syty-select-container select:focus ~ .syty-select-container::after,
+.syty-select-container select:active ~ .syty-select-container::after {
+    border-top-color: #2563eb;
+    background: rgba(59,130,246,0.12);
+}
+
+/* تحسين مظهر الخيارات */
+.syty-select-container select option {
+    background: #fff;
+    color: #374151;
+    padding: 8px 12px;
+    font-size: 15px;
+    border-radius: 0;
+}
+
+/* عند تحديد خيار */
+.syty-select-container select option:checked,
+.syty-select-container select option:focus {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* ================================
+   Popup Select (مخصص - Atlassian Style)
+   ================================ */
+.syty-popup-select {
+  position: relative;
+  min-width: 180px;
+  direction: rtl;
+  font-family: inherit;
+  font-size: 16px;
+  outline: none;
+}
+.syty-popup-select__selected {
+  background: #fff;
+  border: 2px solid #3b82f6;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(59,130,246,0.08);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+  min-height: 28px;
+}
+.syty-popup-select__selected::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 8px solid #3b82f6;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: border-top-color 0.2s;
+}
+.syty-popup-select.open .syty-popup-select__selected,
+.syty-popup-select__selected:focus {
+  border-color: #2563eb;
+  box-shadow: 0 4px 16px rgba(59,130,246,0.15);
+}
+.syty-popup-select__dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  left: 0;
+  background: rgba(255,255,255,0.98);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(59,130,246,0.18), 0 1.5px 6px rgba(59,130,246,0.10);
+  z-index: 100;
+  padding: 4px 0;
+  max-height: 160px;
+  overflow-y: auto;
+  min-width: 100%;
+  backdrop-filter: blur(8px);
+  scrollbar-width: thin;
+  scrollbar-color: #b8c1cf #f3f4f6;
+}
+.syty-popup-select.open .syty-popup-select__dropdown {
+  display: block;
+  animation: syty-popup-fadein 0.18s;
+}
+@keyframes syty-popup-fadein {
+  from { opacity: 0; transform: translateY(-8px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+.syty-popup-select__option {
+  padding: 7px 14px 7px 10px;
+  cursor: pointer;
+  color: #222;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+  font-size: 14px;
+  text-align: right;
+}
+.syty-popup-select__option:hover,
+.syty-popup-select__option.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* ===== شريط تمرير مخصص وجذاب للقوائم المنسدلة ===== */
+.syty-popup-select__dropdown::-webkit-scrollbar {
+    width: 6px;
+    background: #f3f4f6;
+    border-radius: 8px;
+}
+.syty-popup-select__dropdown::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #b8c1cf 0%, #e5e7eb 100%);
+    border-radius: 8px;
+    min-height: 24px;
+}
+.syty-popup-select__dropdown::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;
+}
+
+/* ===== زر أيقونة القوائم المنسدلة (Popup Select Icon Button) ===== */
+.syty-popup-select-icon-btn {
+    background: transparent;
+    border: none;
+    padding: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #374151;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2px;
+}
+.syty-popup-select-icon-btn:hover,
+.syty-popup-select-icon-btn:focus {
+    background: #f3f4f6;
+    color: #2563eb;
+}
+
+/* ضبط موضع Popup Select ليظهر بمحاذاة الأيقونة */
+.syty-popup-select.syty-popup-icon {
+    display: inline-block;
+    min-width: unset;
+    vertical-align: middle;
+}
+.syty-popup-select.syty-popup-icon .syty-popup-select__selected {
+    display: none;
+}
+.syty-popup-select.syty-popup-icon .syty-popup-select__dropdown {
+    min-width: 120px;
+    left: auto;
+    right: 0;
+    top: 36px;
+}
+
+/* ================================
+   أنماط مودال عرض كود HTML (عرض/تعديل كود HTML في نافذة منبثقة)
+   - يغطي الشاشة بالكامل مع تعتيم وخلفية واضحة
+   - يجعل نافذة المودال في المنتصف مع ظل وطبقة فوقية
+   ================================ */
+.syty-preview-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(30, 41, 59, 0.25); /* تعتيم */
+    z-index: 9998;
+    backdrop-filter: blur(2px);
+}
+
+.syty-html-modal,
+.syty-preview-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.syty-preview-content {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    padding: 0;
+    min-width: 400px;
+    max-width: 90vw;
+    min-height: 200px;
+    max-height: 90vh;
+    overflow: auto;
+    position: relative;
+    z-index: 10000;
+}
+
+/* === تكبير حجم مودال عرض HTML والمعاينة === */
+.syty-modal-content,
+.syty-modal .syty-modal-content,
+.syty-html-modal .syty-modal-content,
+.syty-preview-modal .syty-modal-content,
+.syty-preview-content {
+    min-width: 600px !important;
+    max-width: 98vw !important;
+    min-height: 300px !important;
+    max-height: 95vh !important;
+    font-size: 16px;
+}
+
+.syty-html-code-edit {
+    min-height: 350px;
+    height: 50vh;
+    max-height: 70vh;
+    font-size: 15px;
+} 

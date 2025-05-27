@@ -1,0 +1,591 @@
+/**
+ * SymmaType Content Styles - أنماط المحتوى والمعاينة
+ * تنسيق المحتوى المكتوب في المحرر والمعاينة
+ * نظام WYSIWYG موحد مستوحى من TinyMCE و Quill و Trumbowyg
+ */
+
+/* ===== متغيرات المحتوى الموحدة ===== */
+:root {
+    /* أنماط المحتوى الأساسية */
+    --syty-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --syty-content-font-size: 16px;
+    --syty-content-line-height: 1.6;
+    --syty-content-color: #374151;
+    --syty-content-background: #ffffff;
+    
+    /* أنماط العناوين الموحدة */
+    --syty-h1-font-size: 2.25em;
+    --syty-h1-font-weight: 700;
+    --syty-h1-line-height: 1.2;
+    --syty-h1-margin: 0.67em 0;
+    --syty-h1-color: #1f2937;
+    
+    --syty-h2-font-size: 1.875em;
+    --syty-h2-font-weight: 600;
+    --syty-h2-line-height: 1.3;
+    --syty-h2-margin: 0.75em 0;
+    --syty-h2-color: #1f2937;
+    
+    --syty-h3-font-size: 1.5em;
+    --syty-h3-font-weight: 600;
+    --syty-h3-line-height: 1.4;
+    --syty-h3-margin: 0.83em 0;
+    --syty-h3-color: #374151;
+    
+    /* أنماط الجداول الموحدة */
+    --syty-table-border: 2px solid #e5e7eb;
+    --syty-table-border-radius: 8px;
+    --syty-table-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    --syty-table-cell-padding: 12px 16px;
+    --syty-table-header-bg: #f1f5f9;
+    --syty-table-header-color: #374151;
+    --syty-table-stripe-bg: #f9fafb;
+    --syty-table-hover-bg: #f3f4f6;
+    
+    /* ألوان المحتوى */
+    --syty-primary: #3b82f6;
+    --syty-gray-200: #e5e7eb;
+    --syty-gray-300: #d1d5db;
+    --syty-gray-400: #9ca3af;
+    --syty-border-radius: 6px;
+}
+
+
+
+/* ===== الأنماط الأساسية الموحدة ===== */
+/* هذه الأنماط تطبق على المحرر والمعاينة بنفس الطريقة */
+
+.syty-content-base,
+.syty-editor,
+.syty-preview-body,
+.syty-preview-body-clean {
+    font-family: var(--syty-content-font-family) !important;
+    font-size: var(--syty-content-font-size) !important;
+    line-height: var(--syty-content-line-height) !important;
+    color: var(--syty-content-color) !important;
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+/* ===== أنماط العناوين الموحدة ===== */
+.syty-content-base h1,
+.syty-editor h1,
+.syty-preview-body h1,
+.syty-preview-body-clean h1 {
+    font-size: var(--syty-h1-font-size) !important;
+    font-weight: var(--syty-h1-font-weight) !important;
+    line-height: var(--syty-h1-line-height) !important;
+    margin: var(--syty-h1-margin) !important;
+    color: var(--syty-h1-color) !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.syty-content-base h2,
+.syty-editor h2,
+.syty-preview-body h2,
+.syty-preview-body-clean h2 {
+    font-size: var(--syty-h2-font-size) !important;
+    font-weight: var(--syty-h2-font-weight) !important;
+    line-height: var(--syty-h2-line-height) !important;
+    margin: var(--syty-h2-margin) !important;
+    color: var(--syty-h2-color) !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.syty-content-base h3,
+.syty-editor h3,
+.syty-preview-body h3,
+.syty-preview-body-clean h3 {
+    font-size: var(--syty-h3-font-size) !important;
+    font-weight: var(--syty-h3-font-weight) !important;
+    line-height: var(--syty-h3-line-height) !important;
+    margin: var(--syty-h3-margin) !important;
+    color: var(--syty-h3-color) !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.syty-content-base h4,
+.syty-editor h4,
+.syty-preview-body h4,
+.syty-preview-body-clean h4 {
+    font-size: 1.25em !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin: 1em 0 !important;
+    color: var(--syty-h3-color) !important;
+}
+
+.syty-content-base h5,
+.syty-editor h5,
+.syty-preview-body h5,
+.syty-preview-body-clean h5 {
+    font-size: 1.125em !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin: 1em 0 !important;
+    color: var(--syty-h3-color) !important;
+}
+
+.syty-content-base h6,
+.syty-editor h6,
+.syty-preview-body h6,
+.syty-preview-body-clean h6 {
+    font-size: 1em !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin: 1em 0 !important;
+    color: var(--syty-h3-color) !important;
+}
+
+/* ===== أنماط الفقرات الموحدة ===== */
+.syty-content-base p,
+.syty-editor p,
+.syty-preview-body p,
+.syty-preview-body-clean p {
+    margin: 1em 0 !important;
+    line-height: var(--syty-content-line-height) !important;
+    color: var(--syty-content-color) !important;
+}
+
+/* ===== أنماط القوائم الموحدة ===== */
+.syty-content-base ul,
+.syty-content-base ol,
+.syty-editor ul,
+.syty-editor ol,
+.syty-preview-body ul,
+.syty-preview-body ol,
+.syty-preview-body-clean ul,
+.syty-preview-body-clean ol {
+    margin: 1em 0 !important;
+    padding-right: 2em !important;
+    padding-left: 0 !important;
+}
+
+.syty-content-base li,
+.syty-editor li,
+.syty-preview-body li,
+.syty-preview-body-clean li {
+    margin: 0.5em 0 !important;
+    line-height: var(--syty-content-line-height) !important;
+}
+
+/* ===== أنماط الروابط الموحدة ===== */
+.syty-content-base a,
+.syty-editor a,
+.syty-preview-body a,
+.syty-preview-body-clean a {
+    color: var(--syty-primary) !important;
+    text-decoration: underline !important;
+    transition: color 0.2s ease !important;
+}
+
+.syty-content-base a:hover,
+.syty-editor a:hover,
+.syty-preview-body a:hover,
+.syty-preview-body-clean a:hover {
+    color: #2563eb !important;
+}
+
+/* ===== أنماط التنسيق الموحدة ===== */
+.syty-content-base strong,
+.syty-content-base b,
+.syty-editor strong,
+.syty-editor b,
+.syty-preview-body strong,
+.syty-preview-body b,
+.syty-preview-body-clean strong,
+.syty-preview-body-clean b {
+    font-weight: 700 !important;
+}
+
+.syty-content-base em,
+.syty-content-base i,
+.syty-editor em,
+.syty-editor i,
+.syty-preview-body em,
+.syty-preview-body i,
+.syty-preview-body-clean em,
+.syty-preview-body-clean i {
+    font-style: italic !important;
+}
+
+.syty-content-base u,
+.syty-editor u,
+.syty-preview-body u,
+.syty-preview-body-clean u {
+    text-decoration: underline !important;
+}
+
+/* ===== أنماط الخطوط الفاصلة الموحدة ===== */
+.syty-content-base hr,
+.syty-editor hr,
+.syty-preview-body hr,
+.syty-preview-body-clean hr {
+    border: none !important;
+    height: 2px !important;
+    background: linear-gradient(90deg, transparent, var(--syty-gray-300), transparent) !important;
+    margin: 10px 20px !important;
+    border-radius: 1px !important;
+}
+
+/* ===== أنماط الجداول الموحدة الشاملة ===== */
+.syty-content-base .syty-table-wrapper,
+.syty-editor .syty-table-wrapper,
+.syty-preview-body .syty-table-wrapper,
+.syty-preview-body-clean .syty-table-wrapper {
+    margin: 1.5em 0 !important;
+    clear: both !important;
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+}
+
+.syty-content-base .syty-table,
+.syty-content-base table,
+.syty-editor .syty-table,
+.syty-editor table,
+.syty-preview-body .syty-table,
+.syty-preview-body table,
+.syty-preview-body-clean .syty-table,
+.syty-preview-body-clean table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    border: var(--syty-table-border) !important;
+    border-radius: var(--syty-table-border-radius) !important;
+    overflow: hidden !important;
+    box-shadow: var(--syty-table-shadow) !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    background: var(--syty-content-background) !important;
+    margin: 0 !important;
+}
+
+.syty-content-base .syty-table caption,
+.syty-content-base table caption,
+.syty-editor .syty-table caption,
+.syty-editor table caption,
+.syty-preview-body .syty-table caption,
+.syty-preview-body table caption,
+.syty-preview-body-clean .syty-table caption,
+.syty-preview-body-clean table caption {
+    font-weight: 600 !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+    font-size: 1.1em !important;
+    color: var(--syty-table-header-color) !important;
+    padding: 8px !important;
+    caption-side: top !important;
+}
+
+.syty-content-base .syty-table th,
+.syty-content-base .syty-table td,
+.syty-content-base table th,
+.syty-content-base table td,
+.syty-editor .syty-table th,
+.syty-editor .syty-table td,
+.syty-editor table th,
+.syty-editor table td,
+.syty-preview-body .syty-table th,
+.syty-preview-body .syty-table td,
+.syty-preview-body table th,
+.syty-preview-body table td,
+.syty-preview-body-clean .syty-table th,
+.syty-preview-body-clean .syty-table td,
+.syty-preview-body-clean table th,
+.syty-preview-body-clean table td {
+    border: 1px solid var(--syty-gray-300) !important;
+    padding: var(--syty-table-cell-padding) !important;
+    text-align: right !important;
+    min-width: 100px !important;
+    min-height: 40px !important;
+    vertical-align: top !important;
+    transition: background-color 0.2s ease !important;
+    line-height: var(--syty-content-line-height) !important;
+}
+
+.syty-content-base .syty-table th,
+.syty-content-base table th,
+.syty-editor .syty-table th,
+.syty-editor table th,
+.syty-preview-body .syty-table th,
+.syty-preview-body table th,
+.syty-preview-body-clean .syty-table th,
+.syty-preview-body-clean table th {
+    background-color: var(--syty-table-header-bg) !important;
+    font-weight: 600 !important;
+    color: var(--syty-table-header-color) !important;
+    border-bottom: 2px solid var(--syty-gray-400) !important;
+}
+
+.syty-content-base .syty-table tr:nth-child(even) td,
+.syty-content-base table tr:nth-child(even) td,
+.syty-editor .syty-table tr:nth-child(even) td,
+.syty-editor table tr:nth-child(even) td,
+.syty-preview-body .syty-table tr:nth-child(even) td,
+.syty-preview-body table tr:nth-child(even) td,
+.syty-preview-body-clean .syty-table tr:nth-child(even) td,
+.syty-preview-body-clean table tr:nth-child(even) td {
+    background-color: var(--syty-table-stripe-bg) !important;
+}
+
+.syty-content-base .syty-table tr:hover td,
+.syty-content-base table tr:hover td,
+.syty-editor .syty-table tr:hover td,
+.syty-editor table tr:hover td,
+.syty-preview-body .syty-table tr:hover td,
+.syty-preview-body table tr:hover td,
+.syty-preview-body-clean .syty-table tr:hover td,
+.syty-preview-body-clean table tr:hover td {
+    background-color: var(--syty-table-hover-bg) !important;
+}
+
+.syty-content-base .syty-table td:hover,
+.syty-content-base .syty-table th:hover,
+.syty-content-base table td:hover,
+.syty-content-base table th:hover,
+.syty-editor .syty-table td:hover,
+.syty-editor .syty-table th:hover,
+.syty-editor table td:hover,
+.syty-editor table th:hover,
+.syty-preview-body .syty-table td:hover,
+.syty-preview-body .syty-table th:hover,
+.syty-preview-body table td:hover,
+.syty-preview-body table th:hover,
+.syty-preview-body-clean .syty-table td:hover,
+.syty-preview-body-clean .syty-table th:hover,
+.syty-preview-body-clean table td:hover,
+.syty-preview-body-clean table th:hover {
+    background-color: var(--syty-gray-200) !important;
+}
+
+/* ===== أنماط الألوان الموحدة ===== */
+.syty-content-base span[data-syty-colored="true"],
+.syty-editor span[data-syty-colored="true"],
+.syty-preview-body span[data-syty-colored="true"],
+.syty-preview-body-clean span[data-syty-colored="true"] {
+    display: inline !important;
+    position: relative !important;
+    transition: all 0.2s ease !important;
+}
+
+/* ألوان النص الموحدة */
+.syty-content-base span.syty-text-colored,
+.syty-content-base span[data-syty-text-color],
+.syty-content-base span[data-color-type="text"],
+.syty-editor span.syty-text-colored,
+.syty-editor span[data-syty-text-color],
+.syty-editor span[data-color-type="text"],
+.syty-preview-body span.syty-text-colored,
+.syty-preview-body span[data-syty-text-color],
+.syty-preview-body span[data-color-type="text"],
+.syty-preview-body-clean span.syty-text-colored,
+.syty-preview-body-clean span[data-syty-text-color],
+.syty-preview-body-clean span[data-color-type="text"] {
+    display: inline !important;
+    color: var(--syty-text-color, inherit) !important;
+}
+
+/* ألوان الخلفية الموحدة */
+.syty-content-base span.syty-bg-colored,
+.syty-content-base span[data-syty-bg-color],
+.syty-content-base span[data-color-type="background"],
+.syty-editor span.syty-bg-colored,
+.syty-editor span[data-syty-bg-color],
+.syty-editor span[data-color-type="background"],
+.syty-preview-body span.syty-bg-colored,
+.syty-preview-body span[data-syty-bg-color],
+.syty-preview-body span[data-color-type="background"],
+.syty-preview-body-clean span.syty-bg-colored,
+.syty-preview-body-clean span[data-syty-bg-color],
+.syty-preview-body-clean span[data-color-type="background"] {
+    display: inline !important;
+    background-color: var(--syty-bg-color, inherit) !important;
+    padding: 2px 4px !important;
+    border-radius: 3px !important;
+    line-height: inherit !important;
+    box-decoration-break: clone !important;
+    -webkit-box-decoration-break: clone !important;
+}
+
+/* ===== أنماط الصور الموحدة ===== */
+.syty-content-base img,
+.syty-editor img,
+.syty-preview-body img,
+.syty-preview-body-clean img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: var(--syty-border-radius) !important;
+    box-shadow: var(--syty-shadow) !important;
+    margin: 0.5em 0 !important;
+}
+
+.syty-content-base img.syty-img-left,
+.syty-editor img.syty-img-left,
+.syty-preview-body img.syty-img-left,
+.syty-preview-body-clean img.syty-img-left {
+    float: left !important;
+    margin: 0 1em 1em 0 !important;
+}
+
+.syty-content-base img.syty-img-right,
+.syty-editor img.syty-img-right,
+.syty-preview-body img.syty-img-right,
+.syty-preview-body-clean img.syty-img-right {
+    float: right !important;
+    margin: 0 0 1em 1em !important;
+}
+
+.syty-content-base img.syty-img-center,
+.syty-editor img.syty-img-center,
+.syty-preview-body img.syty-img-center,
+.syty-preview-body-clean img.syty-img-center {
+    display: block !important;
+    margin: 1em auto !important;
+}
+
+/* ===== أنماط التنبيهات الموحدة ===== */
+.syty-content-base .syty-alert-info,
+.syty-editor .syty-alert-info,
+.syty-preview-body .syty-alert-info,
+.syty-preview-body-clean .syty-alert-info {
+    background: #cce7ff !important;
+    border: 1px solid #0d6efd !important;
+    border-radius: var(--syty-border-radius) !important;
+    padding: 12px 16px !important;
+    margin: 1em 0 !important;
+    color: #0d6efd !important;
+}
+
+.syty-content-base .syty-alert-warning,
+.syty-editor .syty-alert-warning,
+.syty-preview-body .syty-alert-warning,
+.syty-preview-body-clean .syty-alert-warning {
+    background: #fff3cd !important;
+    border: 1px solid #ffc107 !important;
+    border-radius: var(--syty-border-radius) !important;
+    padding: 12px 16px !important;
+    margin: 1em 0 !important;
+    color: #856404 !important;
+}
+
+.syty-content-base .syty-alert-success,
+.syty-editor .syty-alert-success,
+.syty-preview-body .syty-alert-success,
+.syty-preview-body-clean .syty-alert-success {
+    background: #d4edda !important;
+    border: 1px solid #198754 !important;
+    border-radius: var(--syty-border-radius) !important;
+    padding: 12px 16px !important;
+    margin: 1em 0 !important;
+    color: #198754 !important;
+}
+
+.syty-content-base .syty-alert-danger,
+.syty-editor .syty-alert-danger,
+.syty-preview-body .syty-alert-danger,
+.syty-preview-body-clean .syty-alert-danger {
+    background: #f8d7da !important;
+    border: 1px solid #dc3545 !important;
+    border-radius: var(--syty-border-radius) !important;
+    padding: 12px 16px !important;
+    margin: 1em 0 !important;
+    color: #dc3545 !important;
+}
+
+/* ===== أنماط الكود الموحدة ===== */
+.syty-content-base .syty-code,
+.syty-content-base code,
+.syty-content-base pre,
+.syty-editor .syty-code,
+.syty-editor code,
+.syty-editor pre,
+.syty-preview-body .syty-code,
+.syty-preview-body code,
+.syty-preview-body pre,
+.syty-preview-body-clean .syty-code,
+.syty-preview-body-clean code,
+.syty-preview-body-clean pre {
+    background: #f8f9fa !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: var(--syty-border-radius) !important;
+    padding: 12px 16px !important;
+    margin: 1em 0 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 14px !important;
+    color: #495057 !important;
+    overflow-x: auto !important;
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* ===== أنماط التمييز الموحدة ===== */
+.syty-content-base .syty-highlight,
+.syty-editor .syty-highlight,
+.syty-preview-body .syty-highlight,
+.syty-preview-body-clean .syty-highlight {
+    background: linear-gradient(120deg, #a8e6cf 0%, #dcedc1 100%) !important;
+    padding: 8px 12px !important;
+    border-radius: var(--syty-border-radius) !important;
+    border-left: 4px solid #198754 !important;
+    margin: 1em 0 !important;
+}
+
+/* ===== إعادة تعيين الأنماط المتضاربة ===== */
+.syty-content-base *:first-child,
+.syty-editor *:first-child,
+.syty-preview-body *:first-child,
+.syty-preview-body-clean *:first-child {
+    margin-top: 0 !important;
+}
+
+.syty-content-base *:last-child,
+.syty-editor *:last-child,
+.syty-preview-body *:last-child,
+.syty-preview-body-clean *:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* ===== أنماط التحديد الموحدة ===== */
+.syty-content-base ::selection,
+.syty-editor ::selection,
+.syty-preview-body ::selection,
+.syty-preview-body-clean ::selection {
+    background: rgba(59, 130, 246, 0.2) !important;
+    color: inherit !important;
+}
+
+.syty-content-base ::-moz-selection,
+.syty-editor ::-moz-selection,
+.syty-preview-body ::-moz-selection,
+.syty-preview-body-clean ::-moz-selection {
+    background: rgba(59, 130, 246, 0.2) !important;
+    color: inherit !important;
+}
+
+/* ===== ضمان التوافق مع المحررات العالمية ===== */
+/* مستوحى من TinyMCE */
+.mce-content-body,
+.tox-edit-area__iframe {
+    font-family: var(--syty-content-font-family) !important;
+    font-size: var(--syty-content-font-size) !important;
+    line-height: var(--syty-content-line-height) !important;
+}
+
+/* مستوحى من Quill */
+.ql-editor {
+    font-family: var(--syty-content-font-family) !important;
+    font-size: var(--syty-content-font-size) !important;
+    line-height: var(--syty-content-line-height) !important;
+}
+
+/* مستوحى من Trumbowyg */
+.trumbowyg-box .trumbowyg-editor {
+    font-family: var(--syty-content-font-family) !important;
+    font-size: var(--syty-content-font-size) !important;
+    line-height: var(--syty-content-line-height) !important;
+}
+
+/* ===== نهاية أنماط المحتوى ===== */ 
